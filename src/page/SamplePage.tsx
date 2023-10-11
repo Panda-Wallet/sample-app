@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { usePandaWallet } from "../hooks/usePandaWallet";
-import { Addresses, PubKeys, SignedMessage } from "../types/providerTypes";
 import pandaIcon from "../assets/panda-icon.svg";
 import { PandaConnectButton } from "../components/PandaConnectButton";
+import {
+  Addresses,
+  PubKeys,
+  SignedMessage,
+  usePandaWallet,
+} from "panda-wallet-provider";
 
 export const SamplePage = () => {
   const wallet = usePandaWallet();
