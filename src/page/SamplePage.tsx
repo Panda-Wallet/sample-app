@@ -15,7 +15,7 @@ export const SamplePage = () => {
   >();
 
   const handleConnect = async () => {
-    if (!wallet) {
+    if (!wallet.connect) {
       window.open(
         "https://github.com/Panda-Wallet/panda-wallet#getting-started-alpha",
         "_blank"
