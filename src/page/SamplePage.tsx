@@ -3,14 +3,13 @@ import pandaIcon from "../assets/panda-icon.svg";
 import { PandaConnectButton } from "../components/PandaConnectButton";
 import {
   Addresses,
-  PubKeys,
   SignedMessage,
   usePandaWallet,
 } from "panda-wallet-provider";
 
 export const SamplePage = () => {
   const wallet = usePandaWallet();
-  const [pubKeys, setPubKeys] = useState<PubKeys | undefined>();
+  const [pubKey, setPubKey] = useState<string | undefined>();
   const [addresses, setAddresses] = useState<Addresses | undefined>();
   const [messageToSign, setMessageToSign] = useState<string>("");
 
@@ -26,8 +25,8 @@ export const SamplePage = () => {
       );
       return;
     }
-    const keys = await wallet.connect();
-    if (keys) setPubKeys(keys);
+    const key = await wallet.connect();
+    if (key) setPubKey(key);
   };
 
   const handleGetAddresses = async () => {
@@ -56,9 +55,9 @@ export const SamplePage = () => {
         <h4>First lets connect your wallet 🤑</h4>
         <PandaConnectButton onClick={handleConnect} />
         <p style={{ width: "80%", fontSize: "0.75rem", margin: "1rem" }}>
-          {JSON.stringify(pubKeys)}
+          {JSON.stringify(pubKey)}
         </p>
-        {pubKeys && (
+        {pubKey && (
           <>
             <h4>Now lets get the addresses 💪</h4>
             <button onClick={handleGetAddresses} style={{ margin: "1rem" }}>
