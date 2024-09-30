@@ -2,15 +2,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { App } from "./App";
-import { PandaProvider } from "panda-wallet-provider";
+import { YoursProvider } from "yours-wallet-provider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <PandaProvider>
+  <YoursProvider>
     <App />
-  </PandaProvider>
+  </YoursProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

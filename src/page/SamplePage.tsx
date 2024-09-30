@@ -1,14 +1,14 @@
 import { useState } from "react";
-import pandaIcon from "../assets/panda-icon.svg";
-import { PandaConnectButton } from "../components/PandaConnectButton";
 import {
   Addresses,
   SignedMessage,
-  usePandaWallet,
-} from "panda-wallet-provider";
+  useYoursWallet,
+  YoursIcon,
+} from "yours-wallet-provider";
+import { YoursConnectButton } from "../components/YoursConnectButton";
 
 export const SamplePage = () => {
-  const wallet = usePandaWallet();
+  const wallet = useYoursWallet();
   const [pubKey, setPubKey] = useState<string | undefined>();
   const [addresses, setAddresses] = useState<Addresses | undefined>();
   const [messageToSign, setMessageToSign] = useState<string>("");
@@ -19,10 +19,7 @@ export const SamplePage = () => {
 
   const handleConnect = async () => {
     if (!wallet.connect) {
-      window.open(
-        "https://github.com/Panda-Wallet/panda-wallet#getting-started-alpha",
-        "_blank"
-      );
+      window.open("https://yours.org", "_blank");
       return;
     }
     const key = await wallet.connect();
@@ -46,14 +43,10 @@ export const SamplePage = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          src={pandaIcon}
-          alt="Panda Wallet Icon"
-          style={{ width: "5rem", height: "5rem" }}
-        />
-        <h1>Panda Wallet Demo</h1>
+        <YoursIcon size="5rem" />
+        <h1>Yours Wallet Demo</h1>
         <h4>First lets connect your wallet 🤑</h4>
-        <PandaConnectButton onClick={handleConnect} />
+        <YoursConnectButton onClick={handleConnect} />
         <p style={{ width: "80%", fontSize: "0.75rem", margin: "1rem" }}>
           {JSON.stringify(pubKey)}
         </p>
